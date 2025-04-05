@@ -1,0 +1,69 @@
+ALEX JOHNSON
+Software Engineer & ML Specialist
+alex.johnson@email.com | (555) 123-4567 | github.com/alexjohnson
+
+SUMMARY
+Experienced software engineer with 6 years of expertise in AI/ML development, specializing in building scalable machine learning systems. Passionate about solving complex problems using cutting-edge technologies and delivering high-quality software solutions.
+
+EDUCATION
+Master of Science in Computer Science, Stanford University, 2018
+- Specialization in Machine Learning and Artificial Intelligence
+- GPA: 3.8/4.0
+- Thesis: "Improving Neural Network Efficiency Through Pruning Techniques"
+
+Bachelor of Science in Computer Engineering, University of California, Berkeley, 2016
+- Minor in Mathematics
+- GPA: 3.9/4.0
+- Dean's List all semesters
+
+SKILLS
+- Languages: Python (expert), Java, C++, JavaScript
+- Frameworks: TensorFlow, PyTorch, Keras, scikit-learn, FastAPI, Django
+- Cloud: AWS (EC2, S3, Lambda, SageMaker), Google Cloud Platform
+- DevOps: Docker, Kubernetes, CI/CD, GitHub Actions, Jenkins
+- Database: SQL, MongoDB, Redis
+- Tools: Git, Jira, Jupyter Notebooks, Linux/Unix
+- ML: Deep Learning, NLP, Computer Vision, Recommendation Systems
+
+PROFESSIONAL EXPERIENCE
+
+ML Engineer, DataViz Tech, 2020 - Present
+- Led the development of a real-time recommendation engine using PyTorch, improving customer engagement by 35%
+- Designed and implemented a scalable ML pipeline using AWS SageMaker and Lambda, reducing inference time by 60%
+- Optimized NLP models for text classification, achieving 92% accuracy on customer support ticket categorization
+- Mentored 3 junior engineers, guiding them through ML concepts and best practices
+- Collaborated with product and design teams to integrate ML features into the company's flagship product
+
+Software Engineer, AI Solutions Inc., 2018 - 2020
+- Developed computer vision algorithms for retail analytics using TensorFlow, Python, and OpenCV
+- Built and maintained microservices architecture using Docker and Kubernetes
+- Implemented CI/CD pipelines using Jenkins, reducing deployment time by 40%
+- Created and maintained RESTful APIs using FastAPI to serve ML model predictions
+- Participated in code reviews and technical design discussions
+
+ML Research Intern, Tech Giants, Summer 2017
+- Conducted research on neural network optimization techniques
+- Implemented prototype models using TensorFlow for sentiment analysis
+- Collaborated with senior researchers to improve model accuracy by 15%
+
+PROJECTS
+- Open-source Contributor, ML-Framework-X
+  - Contributed optimized implementations of common ML algorithms
+  - Fixed bugs and improved documentation, with 15+ accepted pull requests
+
+- Personal Project: Emotion Detection System
+  - Built a real-time emotion detection system using PyTorch and OpenCV
+  - Deployed as a web application using React and FastAPI
+  - Achieved 88% accuracy on public benchmark datasets
+
+CERTIFICATIONS
+- AWS Certified Machine Learning Specialist, 2021
+- TensorFlow Developer Certificate, 2020
+- Deep Learning Specialization, Coursera, 2019
+
+PUBLICATIONS
+- Johnson, A., et al. "Efficient Neural Network Pruning Techniques." Conference on Machine Learning Applications, 2019.
+- Contributing author to "Practical Machine Learning with Python," TechPress, 2020.
+
+LANGUAGES
+English (native), Spanish (conversational)

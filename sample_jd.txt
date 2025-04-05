@@ -1,0 +1,41 @@
+Job Title: Senior Software Engineer - AI/ML
+Company: TechInnovate Solutions
+
+About Us:
+TechInnovate Solutions is a growing tech company specializing in AI-powered enterprise solutions. We are looking for a talented Senior Software Engineer with expertise in AI/ML to join our dynamic team.
+
+Responsibilities:
+- Design, develop, and deploy machine learning models and AI algorithms
+- Work with product managers to define AI features and capabilities
+- Implement scalable solutions using Python, TensorFlow, and PyTorch
+- Optimize existing models and systems for performance and accuracy
+- Collaborate with cross-functional teams including data scientists and frontend developers
+- Mentor junior developers and provide technical leadership
+- Stay updated with the latest advancements in AI/ML technologies
+
+Requirements:
+- Bachelor's degree in Computer Science, Engineering, or a related field (Master's preferred)
+- 5+ years of software engineering experience
+- 3+ years of experience with machine learning frameworks (TensorFlow, PyTorch)
+- Strong programming skills in Python
+- Experience with cloud platforms (AWS, GCP, or Azure)
+- Knowledge of data structures, algorithms, and software design principles
+- Familiarity with Docker, Kubernetes, and microservices architecture
+- Experience with CI/CD pipelines and DevOps practices
+- Strong problem-solving skills and attention to detail
+
+Nice to Have:
+- Experience with NLP or computer vision projects
+- Knowledge of distributed computing frameworks like Apache Spark
+- Contributions to open-source ML/AI projects
+- Experience with MLOps tools and practices
+
+Benefits:
+- Competitive salary and equity options
+- Comprehensive health, dental, and vision insurance
+- Flexible work arrangements
+- Professional development budget
+- Regular team-building activities
+- Modern office space with unlimited snacks and coffee
+
+TechInnovate Solutions is an equal opportunity employer. We celebrate diversity and are committed to creating an inclusive environment for all employees.
