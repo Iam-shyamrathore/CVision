@@ -8,7 +8,7 @@ from typing import List, Dict, Optional, Union, Any
 import os
 
 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyD4DzmDJxzxSWkoBucfBhgPGfPxlJmRDdY"
+os.environ["GOOGLE_API_KEY"] = "your Google Gemini API key "
 
 class JDSummary(BaseModel):
     title: str = Field(description="Job title")
