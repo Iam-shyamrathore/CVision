@@ -151,11 +151,10 @@ class RecruitmentDB:
         self.close()
     
     # Candidate Methods
-    def add_candidate(self, name, email, cv_text, phone=None, 
-                     education=None, experience=None, skills=None, certifications=None):
+    def add_candidate(self, name, email, cv_text, phone=None, education=None, experience=None, skills=None, certifications=None):
         self.connect()
+        print(f"Attempting to add candidate: name={name}, email={email}, phone={phone}, cv_text={cv_text}")
         
-        # Convert list/dict fields to JSON strings if provided
         if education and isinstance(education, (list, dict)):
             education = json.dumps(education)
         if experience and isinstance(experience, (list, dict)):
@@ -166,19 +165,26 @@ class RecruitmentDB:
             certifications = json.dumps(certifications)
         
         try:
+            print("Executing INSERT query...")
             self.cursor.execute('''
             INSERT INTO candidates 
             (name, email, phone, cv_text, education, experience, skills, certifications) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             ''', (name, email, phone, cv_text, education, experience, skills, certifications))
-            
             candidate_id = self.cursor.lastrowid
-            self.conn.commit()
+            print(f"Insert successful, candidate_id={candidate_id}")
+        except sqlite3.IntegrityError as e:
+            print(f"IntegrityError: {e}")
             self.close()
-            return candidate_id
-        except sqlite3.IntegrityError:
+            return None
+        except Exception as e:
+            print(f"Unexpected error during insert: {e}")
             self.close()
-            return None  # Email already exists
+            return None
+        
+        self.conn.commit()
+        self.close()
+        return candidate_id
     
     def get_candidate(self, candidate_id):
         self.connect()

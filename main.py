@@ -2,7 +2,10 @@ from agents import JobDescriptionAgent, CVAnalysisAgent, RecruitingMatchAgent, I
 from database import RecruitmentDB
 import json
 from langchain_google_genai import ChatGoogleGenerativeAI
-
+import smtplib
+import os
+from email.mime.text import MIMEText
+from dotenv import load_dotenv
 class RecruitmentSystem:
     def __init__(self, model_name="gemini-2.0-flash-lite"):
         self.db = RecruitmentDB()
@@ -47,8 +50,10 @@ class RecruitmentSystem:
 
     def process_cv(self, name, email, cv_text, phone=None):
         """Process a CV and store it in the database"""
+        print(f"Processing CV: name={name}, email={email}, phone={phone}, cv_text={cv_text}")
         # Step 1: Extract information from CV
         cv_summary = self.cv_agent.extract_cv_info(cv_text)
+        print(f"CV summary extracted: {cv_summary}")
         
         if not cv_summary:
             print("Failed to extract CV information")
@@ -65,11 +70,12 @@ class RecruitmentSystem:
             skills=json.dumps(cv_summary.skills),
             certifications=json.dumps(cv_summary.certifications)
         )
+        print(f"Candidate ID returned from database: {candidate_id}")
         
         if not candidate_id:
-            print(f"Failed to add candidate {email}, might already exist")
+            print(f"Failed to add candidate {email}, might already exist or other error")
             return None
-            
+        
         print(f"CV processed and stored with ID: {candidate_id}")
         return candidate_id
     
@@ -109,42 +115,56 @@ class RecruitmentSystem:
         return match_id, match_result
     
     def generate_interview_requests(self, job_id, min_score=0.8):
-        """Generate interview requests for shortlisted candidates"""
-        # Step 1: Get all shortlisted candidates
+        print(f"Fetching shortlisted candidates for job_id={job_id}, min_score={min_score}")
         shortlisted = self.db.get_shortlisted_candidates_for_job(job_id, min_score)
-        
+        print(f"Shortlisted candidates: {shortlisted}")
         if not shortlisted:
             print("No shortlisted candidates found")
             return []
         
-        # Step 2: Generate interview request for each shortlisted candidate
         requests = []
         job_info = self.db.get_job_description(job_id)
         
+        # Email configuration
+        EMAIL_USER = os.getenv("EMAIL_USER")
+        EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
+        SMTP_SERVER = "smtp.gmail.com"
+        SMTP_PORT = 587
+
         for candidate in shortlisted:
             match_info = self.db.get_match(candidate['id'])
-            
-            # Generate interview request
             email_content = self.scheduler_agent.generate_interview_request(
                 job_info=job_info,
                 candidate_info=candidate,
                 match_result=match_info
             )
-            
             if email_content:
-                # Update database to mark interview request as sent
                 self.db.update_match_status(
                     match_id=candidate['id'],
                     interview_requested=True
                 )
-                
                 requests.append({
                     'candidate_id': candidate['candidate_id'],
                     'candidate_name': candidate['name'],
                     'candidate_email': candidate['email'],
                     'email_content': email_content
                 })
-        
+                # Send email
+                try:
+                    msg = MIMEText(email_content)
+                    msg['Subject'] = f"Interview Request for {job_info['title']} at {job_info['company']}"
+                    msg['From'] = EMAIL_USER
+                    msg['To'] = candidate['email']
+
+                    with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
+                        server.starttls()
+                        server.login(EMAIL_USER, EMAIL_PASSWORD)
+                        server.send_message(msg)
+                    print(f"Email sent successfully to {candidate['email']}")
+                except Exception as e:
+                    print(f"Failed to send email to {candidate['email']}: {str(e)}")
+                    # Continue even if email fails to ensure database updates are saved
+
         print(f"Generated {len(requests)} interview requests")
         return requests
 
